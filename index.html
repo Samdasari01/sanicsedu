@@ -19,7 +19,7 @@
                             100: '#f1f5f9',
                             500: '#3b82f6',
                             800: '#1e293b',
-                            900: '#0f172a', // Deep Slate / Nav
+                            900: '#0f172a', // Deep Slate / Navy
                             950: '#020617',
                         },
                         accent: {
@@ -381,6 +381,86 @@
             </div>
         </section>
 
+    </main>
+
+    <!-- ========================================== -->
+    <!-- VIEW 1.5: REGISTRATION / ONBOARDING -->
+    <!-- ========================================== -->
+    <main id="view-register" class="flex-grow hidden bg-gray-50 flex items-center justify-center py-12 px-4">
+        <div class="max-w-4xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden flex border border-gray-200">
+            <!-- Left Side: Visual / Branding -->
+            <div class="hidden md:flex w-1/2 bg-brand-900 relative p-10 flex-col justify-between overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-900 via-brand-900/80 to-transparent"></div>
+                
+                <div class="relative z-10">
+                    <div class="font-extrabold text-3xl text-white tracking-tight mb-2">
+                        Sanics<span class="text-accent-500">Edu</span>
+                    </div>
+                    <p class="text-accent-500 font-bold text-sm uppercase tracking-wider">Career Acceleration Platform</p>
+                </div>
+
+                <div class="relative z-10 mt-12">
+                    <blockquote class="text-xl text-white font-medium leading-relaxed mb-6">
+                        "Joining SanicsEdu gave me the exact portfolio I needed to crack my core engineering interview. The live projects are game-changers."
+                    </blockquote>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gray-300 border-2 border-accent-500 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" class="w-full h-full object-cover" alt="Student">
+                        </div>
+                        <div>
+                            <p class="text-white font-bold text-sm">Rahul T.</p>
+                            <p class="text-gray-400 text-xs font-semibold">Placed at Tata Motors</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Registration Form -->
+            <div class="w-full md:w-1/2 p-8 md:p-12 bg-white">
+                <h2 class="text-2xl font-extrabold text-brand-900 mb-2">Complete Your Profile</h2>
+                <p class="text-gray-500 text-sm font-medium mb-8">We need a few details to customize your learning experience and issue your certifications correctly.</p>
+
+                <!-- Simulated Google Auth Button -->
+                <button class="w-full flex items-center justify-center gap-3 border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 px-5 py-3 rounded-lg text-sm font-bold transition shadow-sm mb-6">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                    Google Details Synced ✓
+                </button>
+
+                <div class="relative flex py-2 items-center mb-6">
+                    <div class="flex-grow border-t border-gray-200"></div>
+                    <span class="flex-shrink-0 mx-4 text-gray-400 text-xs font-bold uppercase tracking-wider">Required Details</span>
+                    <div class="flex-grow border-t border-gray-200"></div>
+                </div>
+
+                <form class="space-y-4" onsubmit="event.preventDefault(); switchView('student');">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Full Name</label>
+                            <input type="text" value="Arjun Kumar" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">WhatsApp Number</label>
+                            <input type="tel" placeholder="+91 98765 43210" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">College / University Name</label>
+                        <input type="text" placeholder="e.g., NIT Trichy" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500" required>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Degree & Specialization</label>
+                        <input type="text" placeholder="e.g., B.Tech Mechanical Engineering" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500" required>
+                    </div>
+
+                    <button type="submit" class="w-full bg-brand-900 text-white font-bold py-3.5 rounded-lg hover:bg-brand-950 transition shadow-lg mt-6 flex justify-center items-center gap-2">
+                        Start Learning <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
     </main>
 
     <!-- ========================================== -->
@@ -892,31 +972,36 @@
         }
 
         function switchView(viewName) {
-            // Hide all views
-            document.getElementById('view-landing').classList.add('hidden');
-            document.getElementById('view-register').classList.add('hidden');
-            document.getElementById('view-student').classList.add('hidden');
-            document.getElementById('view-admin').classList.add('hidden');
+            // Safely hide all views to prevent null reference errors
+            ['view-landing', 'view-register', 'view-student', 'view-admin'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.add('hidden');
+                }
+            });
             
-            // Show target view
-            document.getElementById(`view-${viewName}`).classList.remove('hidden');
+            // Show target view safely
+            const targetView = document.getElementById(`view-${viewName}`);
+            if (targetView) {
+                targetView.classList.remove('hidden');
+            }
 
-            // Handle Navigation Bar State
+            // Handle Navigation Bar State safely
             const navLoggedOut = document.getElementById('nav-logged-out');
             const navLoggedIn = document.getElementById('nav-logged-in');
             const userGreeting = document.getElementById('user-greeting');
 
             if (viewName === 'landing' || viewName === 'register') {
-                navLoggedOut.classList.remove('hidden');
-                navLoggedIn.classList.add('hidden');
+                if (navLoggedOut) navLoggedOut.classList.remove('hidden');
+                if (navLoggedIn) navLoggedIn.classList.add('hidden');
             } else if (viewName === 'student') {
-                navLoggedOut.classList.add('hidden');
-                navLoggedIn.classList.remove('hidden');
-                userGreeting.innerText = "Arjun Kumar";
+                if (navLoggedOut) navLoggedOut.classList.add('hidden');
+                if (navLoggedIn) navLoggedIn.classList.remove('hidden');
+                if (userGreeting) userGreeting.innerText = "Arjun Kumar";
             } else if (viewName === 'admin') {
-                navLoggedOut.classList.add('hidden');
-                navLoggedIn.classList.remove('hidden');
-                userGreeting.innerHTML = "<span class='text-red-600'>Super Admin</span>";
+                if (navLoggedOut) navLoggedOut.classList.add('hidden');
+                if (navLoggedIn) navLoggedIn.classList.remove('hidden');
+                if (userGreeting) userGreeting.innerHTML = "<span class='text-red-600'>Super Admin</span>";
             }
 
             // Scroll to top
