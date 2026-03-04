@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SanicsEdu | Premium Engineering Programs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            500: '#3b82f6',
+                            800: '#1e293b',
+                            900: '#0f172a', // Deep Slate / Navy
+                            950: '#020617',
+                        },
+                        accent: {
+                            500: '#f97316', // Skill-lync style vibrant orange
+                            600: '#ea580c',
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+                        'hover': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                    },
+                    animation: {
+                        'marquee': 'marquee 30s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Global Navigation -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-2 cursor-pointer" onclick="switchView('landing')">
+                    <div class="bg-brand-900 text-white p-2 rounded lg font-extrabold text-xl leading-none tracking-tighter">SE</div>
+                    <div class="font-extrabold text-2xl text-brand-900 tracking-tight">
+                        Sanics<span class="text-accent-500">Edu</span>
+                    </div>
+                </div>
+                
+                <!-- Nav Links -->
+                <div id="nav-logged-out" class="flex items-center space-x-6">
+                    <a href="#programs" class="hidden md:block text-gray-600 hover:text-brand-900 font-semibold transition">Programs</a>
+                    <a href="#projects" class="hidden md:block text-gray-600 hover:text-brand-900 font-semibold transition">Projects</a>
+                    <button onclick="switchView('register')" class="hidden sm:block text-gray-700 hover:text-brand-900 font-semibold transition">
+                        Log in
+                    </button>
+                    <button onclick="switchView('register')" class="bg-accent-500 text-white px-6 py-2.5 rounded-md text-sm font-bold hover:bg-accent-600 transition shadow-md">
+                        Book Free Demo
+                    </button>
+                    <button onclick="switchView('admin')" class="text-xs text-gray-400 hover:text-brand-900 ml-2">Admin</button>
+                </div>
+
+                <div id="nav-logged-in" class="hidden flex items-center space-x-6">
+                    <span id="user-greeting" class="text-sm font-bold text-brand-900 hidden sm:block">Arjun Kumar</span>
+                    <div class="w-10 h-10 rounded-full bg-brand-100 border-2 border-brand-900 flex items-center justify-center text-brand-900 font-bold">
+                        AK
+                    </div>
+                    <button onclick="switchView('landing')" class="text-gray-500 hover:text-red-600 font-semibold transition text-sm">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================== -->
+    <!-- VIEW 1: LANDING PAGE -->
+    <!-- ========================================== -->
+    <main id="view-landing" class="flex-grow block bg-white">
+        
+        <!-- Premium Hero Section (Dark/Engineering Vibe) -->
+        <section class="relative bg-brand-900 overflow-hidden py-20 lg:py-28">
+            <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-900 via-brand-900/95 to-brand-900/80"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-flex items-center gap-2 bg-brand-800 text-white font-semibold px-4 py-1.5 rounded-full text-xs mb-6 border border-brand-700 shadow-sm uppercase tracking-wide">
+                            <span class="w-2 h-2 rounded-full bg-accent-500"></span>
+                            Industry Aligned Bootcamps & Batches
+                        </div>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight">
+                            Engineer Your Future with <span class="text-accent-500">Project-Based Learning</span>
+                        </h1>
+                        <p class="text-lg text-gray-300 mb-8 max-w-xl font-medium leading-relaxed">
+                            Upskill with industry experts. Build a portfolio of 10+ core engineering projects. Get hired at top OEMs, Tier-1 suppliers, and Tech Giants.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="switchView('register')" class="bg-accent-500 text-white font-bold py-4 px-8 rounded hover:bg-accent-600 transition shadow-lg text-lg text-center flex items-center justify-center gap-2">
+                                Explore Programs <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Mini Stats -->
+                        <div class="mt-10 flex items-center gap-8 text-white border-t border-brand-800 pt-6">
+                            <div>
+                                <p class="text-2xl font-bold text-white">100%</p>
+                                <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Job Assistance</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-white">50+</p>
+                                <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Industry Projects</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-white">4.8/5</p>
+                                <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Learner Rating</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hero Visual -->
+                    <div class="hidden lg:block relative">
+                        <div class="bg-brand-800 border border-brand-700 p-2 rounded-xl shadow-2xl relative z-10">
+                            <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="CAD Engineering" class="rounded-lg w-full h-auto object-cover opacity-90">
+                            
+                            <!-- Tool Badges -->
+                            <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl flex items-center gap-4 border border-gray-100">
+                                <div class="text-center">
+                                    <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center font-bold text-gray-800 mb-1 mx-auto text-xs">NX</div>
+                                    <span class="text-[10px] font-bold text-gray-500 uppercase">Siemens</span>
+                                </div>
+                                <div class="text-center border-l border-gray-200 pl-4">
+                                    <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center font-bold text-gray-800 mb-1 mx-auto text-xs">F360</div>
+                                    <span class="text-[10px] font-bold text-gray-500 uppercase">Autodesk</span>
+                                </div>
+                                <div class="text-center border-l border-gray-200 pl-4">
+                                    <div class="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center font-bold text-gray-800 mb-1 mx-auto text-xs">CREO</div>
+                                    <span class="text-[10px] font-bold text-gray-500 uppercase">PTC</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hiring Partners Marquee -->
+        <section class="bg-white border-b border-gray-200 py-10 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+                <p class="text-center text-xs font-bold text-gray-500 uppercase tracking-widest">Our Learners Are Hired By Industry Leaders</p>
+            </div>
+            <div class="flex w-[200%] animate-marquee">
+                <div class="flex w-1/2 justify-around items-center">
+                    <h3 class="text-2xl font-extrabold text-gray-300 uppercase tracking-wider">Tata Motors</h3>
+                    <h3 class="text-2xl font-extrabold text-gray-300 uppercase tracking-wider">Mahindra</h3>
+                    <h3 class="text-2xl font-extrabold text-gray-300 uppercase tracking-wider">Siemens</h3>
+                    <h3 class="text-2xl font-extrabold text-gray-300 uppercase tracking-wider">L&T Tech</h3>
+                    <h3 class="text-2xl font-extrabold text-gray-300 uppercase tracking-wider">Dassault</h3>
+                </div>
+                <div class="flex w-1/2 justify-around items-center">
+                    <h3 class="text-2xl font-extrabold text-gray-300 uppercase tracking-wider">Tata Motors</h3>
+                    <h3 class="text-2xl font-extrabold text-gray-300 uppercase tracking-wider">Mahindra</h3>
+                    <h3 class="text-2xl font-extrabold text-gray-300 uppercase tracking-wider">Siemens</h3>
+                    <h3 class="text-2xl font-extrabold text-gray-300 uppercase tracking-wider">L&T Tech</h3>
+                    <h3 class="text-2xl font-extrabold text-gray-300 uppercase tracking-wider">Dassault</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section id="programs" class="py-24 bg-gray-50 border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                    <div class="max-w-2xl">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-brand-900 mb-4 tracking-tight">Our Premium Programs</h2>
+                        <p class="text-gray-600 text-lg">Comprehensive programs designed with industry experts. Master the software and build a portfolio that employers demand.</p>
+                    </div>
+                    <div class="mt-6 md:mt-0 flex gap-2">
+                        <button class="bg-brand-900 text-white px-5 py-2 rounded font-bold shadow-sm text-sm">Mechanical CAD</button>
+                        <button class="bg-white text-gray-600 border border-gray-300 px-5 py-2 rounded font-bold hover:bg-gray-50 transition text-sm">Manufacturing</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Silver Batch -->
+                    <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-card hover:shadow-hover transition duration-300 flex flex-col relative group">
+                        <div class="h-48 bg-brand-900 relative">
+                            <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 mix-blend-overlay" alt="Mechanical">
+                            <span class="absolute top-4 left-4 bg-accent-500 text-white text-xs font-bold px-3 py-1 rounded uppercase tracking-wider">Most Popular</span>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <div class="flex gap-2 mb-4">
+                                <span class="bg-brand-100 text-brand-900 text-xs font-bold px-2 py-1 rounded border border-brand-200">Live Zoom</span>
+                                <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded">7 Days</span>
+                                <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded">15 Seats</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-brand-900 mb-2 leading-tight">Silver Batch: Fusion 360 Bootcamp</h3>
+                            <p class="text-gray-600 text-sm mb-6 flex-grow">Master 3D modeling, assemblies, and drafting with live instructor support. Hands-on structural modules.</p>
+                            
+                            <div class="mb-6">
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Tools Covered</p>
+                                <div class="flex gap-2">
+                                    <span class="border border-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded">Fusion 360</span>
+                                    <span class="border border-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded">AutoCAD</span>
+                                </div>
+                            </div>
+                            
+                            <button onclick="toggleSyllabusModal()" class="w-full bg-brand-50 text-brand-900 border border-brand-200 font-bold py-2 rounded mb-5 hover:bg-brand-100 transition text-sm flex justify-center items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> Download Syllabus
+                            </button>
+
+                            <div class="border-t border-gray-100 pt-5 flex justify-between items-center mt-auto">
+                                <div>
+                                    <span class="block text-xs text-gray-500 font-semibold uppercase">Live Batch</span>
+                                    <span class="text-lg font-extrabold text-brand-900">₹2,999</span>
+                                </div>
+                                <button onclick="switchView('register')" class="text-accent-500 font-bold hover:text-accent-600 transition flex items-center gap-1">Enroll Now <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3D Printing Foundation -->
+                    <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-card hover:shadow-hover transition duration-300 flex flex-col relative group">
+                        <div class="h-48 bg-brand-800 relative">
+                            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-60 mix-blend-overlay" alt="3D Printing">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <div class="flex gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded">Recorded</span>
+                                <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded">Self-Paced</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-brand-900 mb-2 leading-tight">3D Printing Foundation</h3>
+                            <p class="text-gray-600 text-sm mb-6 flex-grow">Perfect for beginners. Master industrial 3D printing technologies, slicing parameters, and basic troubleshooting.</p>
+                            
+                            <div class="mb-6">
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Tools Covered</p>
+                                <div class="flex gap-2">
+                                    <span class="border border-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded">UltiMaker Cura</span>
+                                    <span class="border border-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded">PrusaSlicer</span>
+                                </div>
+                            </div>
+                            
+                            <button onclick="toggleSyllabusModal()" class="w-full bg-brand-50 text-brand-900 border border-brand-200 font-bold py-2 rounded mb-5 hover:bg-brand-100 transition text-sm flex justify-center items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> Download Syllabus
+                            </button>
+
+                            <div class="border-t border-gray-100 pt-5 flex justify-between items-center mt-auto">
+                                <div>
+                                    <span class="block text-xs text-gray-500 font-semibold uppercase">Full Access</span>
+                                    <span class="text-lg font-extrabold text-brand-900">₹99</span>
+                                </div>
+                                <button onclick="switchView('register')" class="text-accent-500 font-bold hover:text-accent-600 transition flex items-center gap-1">Buy Course <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Platinum Elite -->
+                    <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-card transition duration-300 flex flex-col relative opacity-80">
+                        <div class="absolute inset-0 bg-white/40 z-10 flex items-center justify-center">
+                            <span class="bg-brand-900 text-white font-bold px-5 py-2.5 rounded shadow-lg uppercase tracking-wider text-sm">Launching Soon</span>
+                        </div>
+                        <div class="h-48 bg-slate-800 relative">
+                            <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover opacity-50 mix-blend-overlay" alt="Advanced CAD">
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col">
+                            <div class="flex gap-2 mb-4">
+                                <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded">Advanced</span>
+                                <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded">Project-Based</span>
+                            </div>
+                            <h3 class="text-xl font-extrabold text-brand-900 mb-2 leading-tight">Platinum Elite: Siemens NX & Creo</h3>
+                            <p class="text-gray-600 text-sm mb-6 flex-grow">Advanced surfacing, simulation basics, and GD&T lessons for core mechanical engineers building portfolios.</p>
+                            
+                            <div class="mb-6">
+                                <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Tools Covered</p>
+                                <div class="flex gap-2">
+                                    <span class="border border-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded">Siemens NX</span>
+                                    <span class="border border-gray-200 text-gray-700 text-xs font-semibold px-2 py-1 rounded">PTC Creo</span>
+                                </div>
+                            </div>
+                            
+                            <div class="border-t border-gray-100 pt-5 flex justify-between items-center mt-auto">
+                                <span class="text-sm font-bold text-gray-500">Waitlist Open</span>
+                                <button class="text-gray-400 font-bold cursor-not-allowed">Join Waitlist</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Project Showcase -->
+        <section id="projects" class="py-24 bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-900 mb-4 tracking-tight">Industry-Grade Portfolios</h2>
+                    <p class="text-gray-600 text-lg">See the actual CAD models, assemblies, and simulations built by SanicsEdu learners.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Project 1 -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-card aspect-[4/3] bg-gray-100 cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1620022201416-65c71b563df6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Engine Assembly" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
+                            <p class="text-accent-500 font-bold text-xs uppercase tracking-wider mb-1">Siemens NX</p>
+                            <h4 class="text-white font-extrabold text-lg">V8 Engine Assembly</h4>
+                            <p class="text-gray-300 text-sm">By Rahul T. • Placed at Tata Motors</p>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-card aspect-[4/3] bg-gray-100 cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Industrial Print" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
+                            <p class="text-accent-500 font-bold text-xs uppercase tracking-wider mb-1">Additive Manufacturing</p>
+                            <h4 class="text-white font-extrabold text-lg">Robotic Arm Actuator</h4>
+                            <p class="text-gray-300 text-sm">By Priya S. • Freelance Consultant</p>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="group relative overflow-hidden rounded-xl shadow-card aspect-[4/3] bg-gray-100 cursor-pointer">
+                        <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Surface Modeling" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-900/90 via-brand-900/20 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-end p-6">
+                            <p class="text-accent-500 font-bold text-xs uppercase tracking-wider mb-1">Fusion 360</p>
+                            <h4 class="text-white font-extrabold text-lg">Aero-Foil Drone Chassis</h4>
+                            <p class="text-gray-300 text-sm">By Arjun K. • Top Batch Learner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mentors Section -->
+        <section class="py-24 bg-brand-900 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight">Learn from Top 1% Engineers</h2>
+                    <p class="text-gray-400 text-lg">Your mentors aren't just teachers; they are senior designers and engineers at top Tier-1 organizations.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <!-- Mentor 1 -->
+                    <div class="bg-brand-800 border border-brand-700 rounded-xl p-6 text-center shadow-card">
+                        <div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 border-2 border-accent-500">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Mentor" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-lg font-extrabold text-white">Siddharth Menon</h4>
+                        <p class="text-xs text-accent-500 font-bold uppercase tracking-wider mb-2">Ex-Tata Motors</p>
+                        <p class="text-sm text-gray-400">10+ years in Body-in-White (BIW) Design & Surfacing.</p>
+                    </div>
+                    <!-- Mentor 2 -->
+                    <div class="bg-brand-800 border border-brand-700 rounded-xl p-6 text-center shadow-card">
+                        <div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 border-2 border-accent-500">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Mentor" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-lg font-extrabold text-white">Ananya Rao</h4>
+                        <p class="text-xs text-accent-500 font-bold uppercase tracking-wider mb-2">Siemens Digital</p>
+                        <p class="text-sm text-gray-400">Expert in NX Simulation and Additive Manufacturing processes.</p>
+                    </div>
+                    <!-- Mentor 3 -->
+                    <div class="bg-brand-800 border border-brand-700 rounded-xl p-6 text-center shadow-card">
+                        <div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-4 border-2 border-accent-500">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Mentor" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-lg font-extrabold text-white">Karthik Iyer</h4>
+                        <p class="text-xs text-accent-500 font-bold uppercase tracking-wider mb-2">Ex-Dassault Systèmes</p>
+                        <p class="text-sm text-gray-400">Specializes in CAD automation and advanced kinematics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- VIEW 2: STUDENT DASHBOARD -->
+    <!-- ========================================== -->
+    <main id="view-student" class="flex-grow hidden bg-gray-100 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Page Header -->
+            <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-brand-900">Learning Portal</h1>
+                    <p class="text-gray-600 mt-1 font-medium">Continue your projects and attend live sessions.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Left Column: User Details -->
+                <div class="lg:col-span-1 space-y-6">
+                    <!-- Profile Card -->
+                    <div class="bg-white border border-gray-200 shadow-sm rounded-xl p-6">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="h-16 w-16 rounded-lg bg-brand-50 flex items-center justify-center text-xl font-extrabold text-brand-900 border border-brand-200">
+                                AK
+                            </div>
+                            <div>
+                                <h2 class="text-xl font-extrabold text-brand-900">Arjun Kumar</h2>
+                                <div class="flex items-center gap-1 text-sm text-gray-500 mt-1 font-medium">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                    arjun.mech24@gmail.com
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-100 pt-4">
+                            <div class="flex justify-between text-sm mb-3">
+                                <span class="text-gray-500 font-semibold">Career Track</span>
+                                <span class="text-brand-900 font-bold">Mechanical Design</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500 font-semibold">Enrolled</span>
+                                <span class="text-gray-800 font-bold">March 2, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Technical Support Widget -->
+                    <div class="bg-brand-900 border border-brand-800 shadow-lg rounded-xl p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-800 rounded-bl-full -z-10 opacity-50"></div>
+                        <h3 class="text-lg font-extrabold text-white mb-2 flex items-center gap-2">
+                            <span class="text-accent-500">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.83L19.17 19H4.83L12 5.83zM11 16h2v2h-2v-2zm0-7h2v5h-2V9z"/></svg>
+                            </span>
+                            Technical Mentor Support
+                        </h3>
+                        <p class="text-sm text-gray-300 mb-5 font-medium">Stuck on a CAD operation or project error? Ask our AI engineering assistant.</p>
+                        <div class="flex flex-col gap-3">
+                            <input type="text" placeholder="E.g., How to fix lofting error in NX..." class="w-full bg-brand-950 border border-brand-700 rounded px-3 py-3 text-sm text-white focus:outline-none focus:border-accent-500 transition">
+                            <button class="bg-accent-500 hover:bg-accent-600 text-white w-full py-2.5 rounded transition font-bold text-sm uppercase tracking-wider">Ask Query</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Classes & Progress -->
+                <div class="lg:col-span-2 space-y-6">
+                    
+                    <!-- Active Course -->
+                    <div class="bg-white border border-gray-200 shadow-card rounded-xl p-6 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-1.5 h-full bg-accent-500"></div>
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-[10px] font-extrabold bg-brand-100 text-brand-900 px-2 py-1 rounded mb-3 inline-block uppercase tracking-wider">Live Cohort</span>
+                                <h2 class="text-2xl font-extrabold text-brand-900 leading-tight">Silver Batch: Fusion 360</h2>
+                                <p class="text-gray-500 text-sm mt-1 font-medium">Cohort: March 2026 • Tools: Fusion 360, AutoCAD</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Center (Meet & WhatsApp) -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 mb-6">
+                            <div class="bg-gray-50 border border-gray-200 p-5 rounded-lg flex flex-col justify-center">
+                                <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Next Live Session</p>
+                                <p class="text-brand-900 font-extrabold mb-4 text-lg">Today, 6:00 PM IST</p>
+                                <a href="#" target="_blank" class="bg-brand-900 hover:bg-brand-950 text-white text-center py-2.5 rounded font-bold transition flex justify-center items-center gap-2 shadow-sm text-sm">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg> 
+                                    Join Google Meet
+                                </a>
+                            </div>
+                            <div class="bg-gray-50 border border-gray-200 p-5 rounded-lg flex flex-col justify-center">
+                                <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">Batch Community</p>
+                                <p class="text-brand-900 font-extrabold mb-4 text-lg">Official WhatsApp Group</p>
+                                <a href="#" target="_blank" class="bg-green-600 hover:bg-green-700 text-white text-center py-2.5 rounded font-bold transition flex justify-center items-center gap-2 shadow-sm text-sm">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                                    Join WhatsApp
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="mt-4 pt-4 border-t border-gray-100">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-700 font-bold">Program Progress</span>
+                                <span class="text-brand-900 font-extrabold">2/5 Projects Done (40%)</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-2.5 rounded">
+                                <div class="bg-accent-500 h-2.5 rounded" style="width: 40%"></div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2 font-semibold uppercase tracking-wider">Current Module: Assembly & Joints</p>
+                        </div>
+                    </div>
+
+                    <!-- Completed/Recorded Courses Grid -->
+                    <h3 class="text-xl font-extrabold text-brand-900 mt-10 mb-5 border-b border-gray-200 pb-2">My Certifications & Bootcamps</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        <!-- Course Card -->
+                        <div class="bg-white border border-gray-200 shadow-sm rounded-xl p-5 hover:border-gray-400 transition cursor-pointer">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider block mb-1">Foundation</span>
+                                    <h4 class="text-md font-extrabold text-brand-900 leading-tight">3D Printing Basics</h4>
+                                </div>
+                                <div class="bg-green-100 text-green-700 p-1.5 rounded text-xs font-bold uppercase">
+                                    Done
+                                </div>
+                            </div>
+                            <div class="flex gap-2 mt-4 mb-5">
+                                <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded uppercase">Cura</span>
+                                <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded uppercase">PrusaSlicer</span>
+                            </div>
+                            <div class="border-t border-gray-100 pt-3">
+                                <button class="w-full bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 py-2 rounded font-bold text-xs uppercase tracking-wider transition shadow-sm">
+                                    Download Certificate
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Add New Card -->
+                        <div onclick="switchView('landing')" class="bg-white border border-dashed border-gray-300 rounded-xl p-5 flex flex-col items-center justify-center text-center hover:border-brand-500 transition cursor-pointer group h-full min-h-[140px]">
+                            <div class="h-10 w-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-brand-600 transition mb-3">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            </div>
+                            <h4 class="text-sm font-extrabold text-gray-700 group-hover:text-brand-900 uppercase tracking-wider">Explore More Programs</h4>
+                        </div>
+
+                    </div>
+
+                    <!-- Exclusive Job Board -->
+                    <h3 class="text-xl font-extrabold text-brand-900 mt-10 mb-5 border-b border-gray-200 pb-2 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-accent-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        Exclusive Career Opportunities
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-white border border-gray-200 shadow-sm rounded-xl p-5 hover:border-accent-500 transition flex justify-between items-center group">
+                            <div>
+                                <h4 class="text-md font-extrabold text-brand-900">Junior Design Engineer</h4>
+                                <p class="text-sm text-gray-500 font-medium mt-0.5">Tata Motors • Pune, India • Full-Time</p>
+                                <div class="flex gap-2 mt-2">
+                                    <span class="bg-brand-50 text-brand-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Requires NX</span>
+                                    <span class="bg-green-50 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Hiring Now</span>
+                                </div>
+                            </div>
+                            <button class="bg-gray-100 text-brand-900 group-hover:bg-accent-500 group-hover:text-white px-5 py-2.5 rounded font-bold uppercase tracking-wider transition text-xs shadow-sm">Apply</button>
+                        </div>
+                        <div class="bg-white border border-gray-200 shadow-sm rounded-xl p-5 hover:border-accent-500 transition flex justify-between items-center group">
+                            <div>
+                                <h4 class="text-md font-extrabold text-brand-900">CAD Drafter & Modeler</h4>
+                                <p class="text-sm text-gray-500 font-medium mt-0.5">L&T Technology Services • Chennai, India</p>
+                                <div class="flex gap-2 mt-2">
+                                    <span class="bg-brand-50 text-brand-700 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Fusion 360</span>
+                                </div>
+                            </div>
+                            <button class="bg-gray-100 text-brand-900 group-hover:bg-accent-500 group-hover:text-white px-5 py-2.5 rounded font-bold uppercase tracking-wider transition text-xs shadow-sm">Apply</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- VIEW 3: ADMIN DASHBOARD -->
+    <!-- ========================================== -->
+    <main id="view-admin" class="flex-grow hidden bg-gray-100 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <span class="bg-red-600 text-white text-[10px] font-bold px-2.5 py-1 rounded shadow-sm mb-2 inline-block uppercase tracking-wider">Super Admin</span>
+                    <h1 class="text-3xl font-extrabold text-brand-900">Platform Control Center</h1>
+                </div>
+                <div class="flex gap-3">
+                    <button class="bg-white border border-gray-300 text-gray-700 font-bold px-4 py-2 rounded text-sm hover:bg-gray-50 transition shadow-sm">Export Data</button>
+                    <button class="bg-brand-900 text-white font-bold px-4 py-2 rounded text-sm hover:bg-brand-950 transition shadow-sm">+ New Cohort</button>
+                </div>
+            </div>
+
+            <!-- Stats Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs text-gray-500 font-bold tracking-wider uppercase">Active Learners</p>
+                    <p class="text-3xl font-extrabold text-brand-900 mt-2">142</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs text-gray-500 font-bold tracking-wider uppercase">Live Cohorts</p>
+                    <p class="text-3xl font-extrabold text-brand-900 mt-2">2 <span class="text-sm font-semibold text-gray-400">/ 30 seats</span></p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs text-gray-500 font-bold tracking-wider uppercase">Bootcamp Sales</p>
+                    <p class="text-3xl font-extrabold text-brand-900 mt-2">89</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs text-gray-500 font-bold tracking-wider uppercase">Total Revenue</p>
+                    <p class="text-3xl font-extrabold text-green-600 mt-2">₹45,800</p>
+                </div>
+            </div>
+
+            <!-- Manage Active Batches Section -->
+            <div class="bg-white border border-gray-200 rounded-xl shadow-sm mb-8">
+                <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50 rounded-t-xl">
+                    <h2 class="text-lg font-extrabold text-brand-900">Live Cohort Manager</h2>
+                </div>
+                <div class="p-6">
+                    <!-- Batch Control Card -->
+                    <div class="border border-brand-200 bg-brand-50 rounded-xl p-5 shadow-sm">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-5 gap-2 border-b border-brand-100 pb-4">
+                            <div>
+                                <h3 class="font-extrabold text-brand-900 text-lg flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse shadow-sm"></span>
+                                    Silver Batch: Fusion 360
+                                </h3>
+                                <p class="text-sm text-gray-600 mt-1 font-semibold">Cohort: March 2026 • Capacity: 15/15</p>
+                            </div>
+                            <span class="bg-white text-gray-700 text-xs px-3 py-1.5 rounded border border-gray-200 font-bold uppercase tracking-wider shadow-sm">Status: Active</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-end">
+                            <div class="md:col-span-4">
+                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-2">Today's Session Link</label>
+                                <input type="url" value="https://meet.google.com/xyz-abcd-efg" class="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-brand-500 focus:border-brand-500 shadow-sm transition">
+                            </div>
+                            <div class="md:col-span-3">
+                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-2">Community Invite</label>
+                                <input type="url" value="https://chat.whatsapp.com/invite..." class="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500 shadow-sm transition">
+                            </div>
+                            <div class="md:col-span-3">
+                                <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-2">Schedule</label>
+                                <input type="text" value="Today, 6:00 PM IST" class="w-full bg-white border border-gray-300 rounded px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-brand-500 focus:border-brand-500 shadow-sm transition">
+                            </div>
+                            <div class="md:col-span-2">
+                                <button class="w-full bg-accent-500 text-white font-bold py-2.5 rounded hover:bg-accent-600 transition shadow-md text-sm uppercase tracking-wider">
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Table -->
+            <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                <div class="px-6 py-5 border-b border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gray-50/50">
+                    <h2 class="text-lg font-extrabold text-brand-900">Learner Database</h2>
+                    <div class="relative w-full sm:w-64">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        </div>
+                        <input type="text" placeholder="Search by email..." class="w-full pl-10 bg-white border border-gray-300 rounded px-3 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-brand-500 focus:border-brand-500 transition font-medium">
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-50 border-b border-gray-200 text-[10px] font-bold text-gray-500 uppercase tracking-wider">
+                                <th class="px-6 py-4">Student Info</th>
+                                <th class="px-6 py-4">Program Enrolled</th>
+                                <th class="px-6 py-4">Progress</th>
+                                <th class="px-6 py-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm divide-y divide-gray-100">
+                            <!-- Row 1 -->
+                            <tr class="hover:bg-gray-50 transition group">
+                                <td class="px-6 py-4">
+                                    <div class="font-extrabold text-brand-900">Arjun Kumar</div>
+                                    <div class="text-xs text-gray-500 mt-1 font-medium flex items-center gap-2">
+                                        <span>arjun.mech24@gmail.com</span> 
+                                        <span class="text-gray-300">|</span> 
+                                        <span>+91 98765 43210</span>
+                                    </div>
+                                    <div class="text-[10px] text-brand-800 font-bold uppercase tracking-wider mt-1 bg-brand-50 inline-block px-1.5 py-0.5 rounded border border-brand-100">
+                                        B.Tech Mechanical • NIT Trichy
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2 py-1 rounded text-[10px] font-bold bg-brand-50 text-brand-900 border border-brand-200 uppercase tracking-wider">
+                                        Silver Batch (Live)
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="w-full bg-gray-200 h-1.5 rounded mb-2 max-w-[120px]">
+                                        <div class="bg-accent-500 h-1.5 rounded" style="width: 40%"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-gray-600">40% Complete</span>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <button class="text-brand-900 font-bold text-xs transition bg-white border border-gray-200 shadow-sm px-3 py-1.5 rounded hover:bg-gray-50 uppercase tracking-wider">Manage</button>
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr class="hover:bg-gray-50 transition group">
+                                <td class="px-6 py-4">
+                                    <div class="font-extrabold text-brand-900">Priya Sharma</div>
+                                    <div class="text-xs text-gray-500 mt-1 font-medium flex items-center gap-2">
+                                        <span>p.sharma_design@yahoo.com</span>
+                                        <span class="text-gray-300">|</span> 
+                                        <span>+91 91234 56789</span>
+                                    </div>
+                                    <div class="text-[10px] text-gray-600 font-bold uppercase tracking-wider mt-1 bg-gray-100 inline-block px-1.5 py-0.5 rounded border border-gray-200">
+                                        M.Tech Design • IIT Madras
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center px-2 py-1 rounded text-[10px] font-bold bg-gray-100 text-gray-700 border border-gray-200 uppercase tracking-wider">
+                                        Foundation (₹99)
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="text-[10px] font-bold text-green-700 uppercase tracking-wider bg-green-100 px-2 py-1 rounded inline-flex">
+                                        Done
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-right flex justify-end gap-2 items-center">
+                                    <button class="text-white bg-green-600 hover:bg-green-700 transition text-[10px] font-bold shadow-sm px-3 py-1.5 rounded uppercase tracking-wider flex items-center gap-1">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> Upload Cert
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-950 pt-16 pb-8 border-t border-brand-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+                <!-- Branding & General Links -->
+                <div class="col-span-1 sm:col-span-2 lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="bg-brand-800 text-white p-1.5 rounded font-extrabold text-sm leading-none border border-brand-700">SE</div>
+                        <div class="font-extrabold text-xl text-white tracking-tight">Sanics<span class="text-accent-500">Edu</span></div>
+                    </div>
+                    <p class="text-gray-400 text-sm max-w-sm mb-6 font-medium leading-relaxed">India's leading platform for core engineering upskilling. Build a portfolio of projects and land your dream job at top OEMs.</p>
+                    
+                    <div class="flex flex-wrap gap-x-6 gap-y-3 mt-8 text-xs text-gray-400 font-bold uppercase tracking-wider">
+                        <a href="#" class="hover:text-accent-500 transition">About Us</a>
+                        <a href="#" class="hover:text-accent-500 transition">Contact Us</a>
+                        <a href="#" class="hover:text-accent-500 transition">FAQs</a>
+                        <a href="#" class="hover:text-accent-500 transition">Refund Policy</a>
+                    </div>
+                </div>
+
+                <!-- Popular Courses -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Popular Courses</h4>
+                    <ul class="space-y-3 text-sm text-gray-400 font-medium">
+                        <li><a href="#" class="hover:text-accent-500 transition">Python - IIT-M Pravartak</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Java</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Mobile Hacking</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">C Programming</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">AWS</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Angular</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Dark Web</a></li>
+                        <li class="pt-2"><a href="#" class="text-accent-500 font-bold hover:text-accent-600 transition">All Courses →</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Resources</h4>
+                    <ul class="space-y-3 text-sm text-gray-400 font-medium">
+                        <li><a href="#" class="hover:text-accent-500 transition">Success Stories</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Learn Hub</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Free Resources</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Web Stories</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Rewards</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Refer a friend</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Become an Affiliate</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Resume Builder</a></li>
+                    </ul>
+                </div>
+
+                <!-- Community & Our Bootcamps -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Community</h4>
+                    <ul class="space-y-3 text-sm text-gray-400 font-medium mb-8">
+                        <li><a href="#" class="hover:text-accent-500 transition">Campus Ambassador</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Industrial visit</a></li>
+                    </ul>
+
+                    <h4 class="text-white font-bold mb-4 uppercase text-xs tracking-wider">Premium Bootcamps</h4>
+                    <ul class="space-y-3 text-sm text-gray-400 font-medium">
+                        <li><a href="#" class="hover:text-accent-500 transition">Silver Batch: Fusion 360</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">3D Printing Foundation</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition">Platinum Elite (Waitlist)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-brand-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-xs font-bold uppercase tracking-wider">&copy; 2026 Sanics Instruments Pvt Ltd.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Download Syllabus Modal -->
+    <div id="syllabus-modal" class="fixed inset-0 z-[60] bg-brand-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative transform scale-95 transition-transform duration-300" id="syllabus-modal-content">
+            <button onclick="toggleSyllabusModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-900 transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h3 class="text-2xl font-extrabold text-brand-900 mb-2">Download Detailed Syllabus</h3>
+            <p class="text-sm text-gray-500 font-medium mb-6">Enter your details to instantly receive the PDF syllabus and curriculum timeline in your inbox.</p>
+            <form onsubmit="event.preventDefault(); alert('Syllabus successfully sent to your email!'); toggleSyllabusModal();">
+                <input type="text" placeholder="Full Name" class="w-full bg-gray-50 border border-gray-300 rounded mb-4 px-4 py-3 text-sm focus:outline-none focus:border-accent-500" required>
+                <input type="email" placeholder="Email Address" class="w-full bg-gray-50 border border-gray-300 rounded mb-6 px-4 py-3 text-sm focus:outline-none focus:border-accent-500" required>
+                <button type="submit" class="w-full bg-accent-500 text-white font-bold py-3 rounded hover:bg-accent-600 transition shadow-md uppercase tracking-wider text-sm">Send Me The PDF</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating AI Ambassador -->
+    <div class="fixed bottom-6 right-6 z-[60] flex flex-col items-end">
+        <!-- Chat Bubble -->
+        <div id="ai-chat-bubble" class="bg-white border border-gray-200 shadow-2xl rounded-2xl p-5 mb-4 w-80 transform origin-bottom-right transition-all duration-300 scale-0 opacity-0 hidden">
+            <div class="flex justify-between items-start mb-3 border-b border-gray-100 pb-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full border-2 border-brand-500 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Aisha AI" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="font-extrabold text-brand-900 text-sm">Aisha</h4>
+                        <p class="text-[10px] text-brand-500 font-bold uppercase tracking-wider">Sanics AI Mentor</p>
+                    </div>
+                </div>
+                <button onclick="toggleAIChat()" class="text-gray-400 hover:text-red-500 transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <p class="text-sm text-gray-600 font-medium mb-4 leading-relaxed">Hi! 👋 I'm Aisha, your AI Ambassador. Need help choosing the right CAD program, or looking for curriculum details?</p>
+            <div class="space-y-2">
+                <button class="w-full bg-brand-50 text-brand-900 text-xs font-bold py-2.5 rounded hover:bg-brand-100 transition border border-brand-200 shadow-sm">Help me choose a course</button>
+                <button class="w-full bg-white text-gray-700 text-xs font-bold py-2.5 rounded hover:bg-gray-50 transition border border-gray-200 shadow-sm">Download a syllabus</button>
+            </div>
+        </div>
+        
+        <!-- Ambassador Avatar Button -->
+        <button onclick="toggleAIChat()" class="relative group shadow-2xl rounded-full focus:outline-none focus:ring-4 focus:ring-brand-500/30 transition-transform hover:scale-105">
+            <!-- Ping indicator -->
+            <span class="absolute top-0 right-0 flex h-4 w-4 z-10">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-500 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-4 w-4 bg-accent-500 border-2 border-white"></span>
+            </span>
+            <div class="w-16 h-16 rounded-full border-4 border-white overflow-hidden bg-brand-500 shadow-lg relative">
+                <!-- Using an image of a young professional Indian woman with glasses -->
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Aisha - AI Ambassador wearing blue polo and glasses" class="w-full h-full object-cover">
+                <!-- Blue overlay to simulate the Blue Polo vibe if needed -->
+                <div class="absolute inset-0 bg-blue-500/10 mix-blend-color"></div>
+            </div>
+        </button>
+    </div>
+
+    <!-- Prototype Navigation Script -->
+    <script>
+        // Modal functions
+        function toggleSyllabusModal() {
+            const modal = document.getElementById('syllabus-modal');
+            const content = document.getElementById('syllabus-modal-content');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    content.classList.remove('scale-95');
+                }, 10);
+            } else {
+                modal.classList.add('opacity-0');
+                content.classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Chat Widget functions
+        function toggleAIChat() {
+            const chat = document.getElementById('ai-chat-bubble');
+            if (chat.classList.contains('hidden')) {
+                chat.classList.remove('hidden');
+                setTimeout(() => {
+                    chat.classList.remove('scale-0', 'opacity-0');
+                }, 10);
+            } else {
+                chat.classList.add('scale-0', 'opacity-0');
+                setTimeout(() => {
+                    chat.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function switchView(viewName) {
+            // Hide all views
+            document.getElementById('view-landing').classList.add('hidden');
+            document.getElementById('view-register').classList.add('hidden');
+            document.getElementById('view-student').classList.add('hidden');
+            document.getElementById('view-admin').classList.add('hidden');
+            
+            // Show target view
+            document.getElementById(`view-${viewName}`).classList.remove('hidden');
+
+            // Handle Navigation Bar State
+            const navLoggedOut = document.getElementById('nav-logged-out');
+            const navLoggedIn = document.getElementById('nav-logged-in');
+            const userGreeting = document.getElementById('user-greeting');
+
+            if (viewName === 'landing' || viewName === 'register') {
+                navLoggedOut.classList.remove('hidden');
+                navLoggedIn.classList.add('hidden');
+            } else if (viewName === 'student') {
+                navLoggedOut.classList.add('hidden');
+                navLoggedIn.classList.remove('hidden');
+                userGreeting.innerText = "Arjun Kumar";
+            } else if (viewName === 'admin') {
+                navLoggedOut.classList.add('hidden');
+                navLoggedIn.classList.remove('hidden');
+                userGreeting.innerHTML = "<span class='text-red-600'>Super Admin</span>";
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
